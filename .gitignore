@@ -360,3 +360,5 @@ build/
 .vscode/
 indices/
 scripts/config_local.sh
+
+output/
