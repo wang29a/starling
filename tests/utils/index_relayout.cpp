@@ -209,6 +209,7 @@ void relayout_custom(const char* graph_file, const char* meta_file,
   meta_in.read((char*)&max_nbr_len, sizeof(uint32_t));
   meta_in.read((char*)&max_alpha_range_len, sizeof(uint32_t));
   meta_in.read((char*)&nnodes_per_sector_meta, sizeof(uint64_t));
+  meta_in.read((char*)&ep_size, sizeof(uint32_t));
 
   std::vector<uint32_t> enterpoint_set(ep_size);
   meta_in.read((char*)enterpoint_set.data(), ep_size * sizeof(uint32_t));
@@ -216,9 +217,12 @@ void relayout_custom(const char* graph_file, const char* meta_file,
 
   std::cout << "Meta info:" << std::endl;
   std::cout << "  node_num: " << node_num << std::endl;
+  std::cout << "  dim1: " << emb_dim << std::endl;
+  std::cout << "  dim2: " << loc_dim << std::endl;
   std::cout << "  max_nbr_len: " << max_nbr_len << std::endl;
   std::cout << "  max_alpha_range_len: " << max_alpha_range_len << std::endl;
   std::cout << "  nnodes_per_sector: " << nnodes_per_sector_meta << std::endl;
+  std::cout << "  ep_size: " << ep_size << std::endl;
 
   if (node_num != _nd) {
     std::cout << "Node count mismatch!" << std::endl;
